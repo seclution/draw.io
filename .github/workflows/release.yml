@@ -1,0 +1,35 @@
+name: Build and Upload Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Build with Maven
+        run: mvn -B package
+      - name: Read project version
+        id: vars
+        run: echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_OUTPUT
+      - name: Upload API jar
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: draw.io-api/target/draw.io-api-${{ steps.vars.outputs.version }}.jar
+          asset_name: draw.io-api-${{ steps.vars.outputs.version }}.jar
+          asset_content_type: application/java-archive
+      - name: Upload WebJar
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: draw.io-webjar/target/draw.io-${{ steps.vars.outputs.version }}.jar
+          asset_name: draw.io-${{ steps.vars.outputs.version }}.jar
+          asset_content_type: application/java-archive
