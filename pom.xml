@@ -45,6 +45,38 @@
     <url>https://github.com/xwiki-contrib/draw.io/tree/master</url>
     <tag>HEAD</tag>
   </scm>
+  <repositories>
+    <repository>
+      <id>xwiki-releases</id>
+      <url>https://maven.xwiki.org/releases/</url>
+    </repository>
+    <repository>
+      <id>xwiki-snapshots</id>
+      <url>https://maven.xwiki.org/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>xwiki-releases</id>
+      <url>https://maven.xwiki.org/releases/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>xwiki-snapshots</id>
+      <url>https://maven.xwiki.org/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
   <properties>
     <draw.io.version>27.1.6</draw.io.version>
     <mxgraph.version>4.2.2_final</mxgraph.version>
