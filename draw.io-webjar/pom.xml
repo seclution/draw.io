@@ -228,7 +228,7 @@
               <includes>
                 <include>diagramly/Init.js</include>
                 <!-- Fall-back on the Graph Editor defaults. -->
-                <include>grapheditor/Init.js</include>
+                <include>Init.js</include>
               </includes>
             </configuration>
           </execution>
@@ -241,7 +241,7 @@
             </goals>
             <configuration>
               <baseSourceDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}</baseSourceDir>
-              <sourceDir>${project.version}/js/grapheditor</sourceDir>
+              <sourceDir>${project.version}/js</sourceDir>
               <baseTargetDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}</baseTargetDir>
               <targetDir>${project.version}/js</targetDir>
               <skipMerge>false</skipMerge>
@@ -275,7 +275,7 @@
             </goals>
             <configuration>
               <baseSourceDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}</baseSourceDir>
-              <sourceDir>${project.version}/js/grapheditor</sourceDir>
+              <sourceDir>${project.version}/js</sourceDir>
               <baseTargetDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}</baseTargetDir>
               <targetDir>${project.version}/js</targetDir>
               <skipMerge>false</skipMerge>
