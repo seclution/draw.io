@@ -228,7 +228,7 @@
               <includes>
                 <include>diagramly/Init.js</include>
                 <!-- Fall-back on the Graph Editor defaults. -->
-                <include>grapheditor/Init.js</include>
+                <include>Init.js</include>
               </includes>
             </configuration>
           </execution>
