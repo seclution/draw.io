@@ -1,0 +1,26 @@
+name: Sync package builder
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fetch package builder
+        run: |
+          git clone --depth 1 https://github.com/seclution/draw.io.git package-builder
+          rm -rf builder-scripts
+          mv package-builder builder-scripts
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: sync packaging builder from seclution/draw.io'
+          branch: update-package-builder
+          title: 'Update packaging builder'
+          delete-branch: true
+          body: |
+            Automated update of packaging builder from seclution/draw.io.
