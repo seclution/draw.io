@@ -1,0 +1,26 @@
+name: Sync draw.io sources
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fetch upstream sources
+        run: |
+          git clone --depth 1 https://github.com/jgraph/drawio.git jgraph-drawio
+          rm -rf drawio-sources
+          mv jgraph-drawio drawio-sources
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: update draw.io sources from jgraph/drawio'
+          branch: update-drawio-sources
+          title: 'Update draw.io sources'
+          delete-branch: true
+          body: |
+            Automated update of draw.io sources from upstream repository.
